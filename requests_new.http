@@ -1,0 +1,129 @@
+### Новая геозона - работает
+POST http://localhost:8080/geozones
+Content-Type: application/json
+
+{
+  "name": "Geozone 1",
+  "polyline": [
+    { "lng": 30.0, "lat": 50.0 },
+    { "lng": 30.1, "lat": 50.0 },
+    { "lng": 30.1, "lat": 50.1 },
+    { "lng": 30.0, "lat": 50.1 },
+    { "lng": 30.0, "lat": 50.0 }
+  ]
+}
+
+### Новая геозона
+
+POST http://localhost:8080/geozones
+Content-Type: application/json
+
+{
+  "name": "Geozone 2",
+  "polyline": [
+    { "lng": 30.5, "lat": 50.5 },
+    { "lng": 30.6, "lat": 50.5 },
+    { "lng": 30.6, "lat": 50.6 },
+    { "lng": 30.5, "lat": 50.6 },
+    { "lng": 30.5, "lat": 50.5 }
+  ]
+}
+
+### Новая геозона
+
+POST http://localhost:8080/geozones
+Content-Type: application/json
+
+{
+  "name": "Geozone 3",
+  "polyline": [
+    { "lng": 31.0, "lat": 51.0 },
+    { "lng": 31.1, "lat": 51.0 },
+    { "lng": 31.1, "lat": 51.1 },
+    { "lng": 31.0, "lat": 51.1 },
+    { "lng": 31.0, "lat": 51.0 }
+  ]
+}
+
+###
+
+POST http://localhost:8080/geozones
+Content-Type: application/json
+
+{
+  "name": "Geozone 4",
+  "polyline": [
+    { "lng": 30.0, "lat": 50.0 },
+    { "lng": 40.0, "lat": 50.0 },
+    { "lng": 40.0, "lat": 60.0 },
+    { "lng": 30.0, "lat": 60.0 },
+    { "lng": 30.0, "lat": 50.0 }
+  ]
+}
+### Новый рекорд
+
+POST http://localhost:8080/records
+Content-Type: application/json
+
+{
+  "id": "668841c5ef06c66bbfb07d07",
+  "captureAt": "2023-06-20T12:34:56Z",
+  "position": { "lng": 35.0, "lat": 55.0 }
+}
+
+### Новый рекорд
+
+POST http://localhost:8080/records
+Content-Type: application/json
+
+{
+  "id": "668185226c62ece8a78eb414",
+  "captureAt": "2023-06-20T12:34:56Z",
+  "position": { "lng": 31.05, "lat": 51.05 }
+}
+
+### Новый рекорд
+
+POST http://localhost:8080/records
+Content-Type: application/json
+
+{
+  "id": "668185226c62ece8a78eb411",
+  "captureAt": "2023-06-20T12:34:56Z",
+  "position": { "lng": 47.003, "lat": 59.05 }
+}
+
+### Добавление рекорду геозон в которые он попадает
+
+POST http://localhost:8080/update-record-geozones
+Content-Type: application/json
+
+{
+  "id": "668185226c62ece8a78eb414"
+}
+
+### Получение геозоны по ID - работает
+
+GET http://localhost:8080/geozones/668fe68f7fb980760c1e95ff
+Content-Type: application/json
+
+### Обновление геозоны - работает 
+
+PUT http://localhost:8080/geozones/668fe68d7fb980760c1e95fe
+Content-Type: application/json
+
+{
+  "name": "Updated Geozone 3",
+  "polyline": [
+    { "lng": 31.0, "lat": 51.0 },
+    { "lng": 31.1, "lat": 51.0 },
+    { "lng": 31.1, "lat": 51.2 },
+    { "lng": 31.0, "lat": 51.2 },
+    { "lng": 31.0, "lat": 51.0 }
+  ]
+}
+
+### удаление геозоны - работает
+
+DELETE http://localhost:8080/geozones/668fe68d7fb980760c1e95fe
+Content-Type: application/json

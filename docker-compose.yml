@@ -1,0 +1,38 @@
+services:
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  nats:
+    image: nats:latest
+    container_name: nats
+    command:
+      - "--http_port=8222"
+      - "--js"
+      - "--sd=/data/jetstream"
+    volumes:
+      - nats-js-store:/data/jetstream
+    ports:
+      - "4222:4222"
+
+  app:
+    image: suvva-geo-ride-service:latest
+    container_name: suvva-geo-ride-service
+    environment:
+      MONGO_URI: mongodb://mongo:27017/rides_db
+      NATS_URL: nats://nats:4222
+      STREAM_NAME: RECORDS_STREAM
+      DURABLE_NAME: CONSUMER
+    depends_on:
+      - mongo
+      - nats
+    ports:
+      - "8080:8080"
+
+volumes:
+  mongo-data:
+  nats-js-store:
